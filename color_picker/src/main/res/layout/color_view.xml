@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".color_view.ColorView"
+    tools:layout_height="250dp"
+    tools:layout_width="300dp"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <com.ss.color_picker.color_view.HorizontalBar
+        android:id="@+id/seekBarHue"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/seekBarSaturationLightness"
+        app:layout_constraintDimensionRatio="100:15"
+        app:layout_constraintEnd_toEndOf="@id/seekBarSaturationLightness"
+        app:layout_constraintStart_toStartOf="@id/seekBarSaturationLightness"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.ss.color_picker.color_view.HorizontalVerticalBar
+        android:id="@+id/seekBarSaturationLightness"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/seekBarAlpha"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarHue"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <com.ss.color_picker.color_view.HorizontalBar
+        android:id="@+id/seekBarAlpha"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="100:15"
+        app:layout_constraintEnd_toEndOf="@id/seekBarSaturationLightness"
+        app:layout_constraintStart_toStartOf="@id/seekBarSaturationLightness"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarSaturationLightness" />
+
+</merge>
