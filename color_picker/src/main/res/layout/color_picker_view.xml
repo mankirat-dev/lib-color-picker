@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_height="500dp"
+    tools:layout_width="300dp"
+    tools:context=".ColorPickerView"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <com.ss.color_picker.color_view.ColorView
+        android:id="@+id/colorView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/barrierVertical"
+        app:layout_constraintEnd_toStartOf="@id/barrierHorizontal"/>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:barrierDirection="start"
+        app:constraint_referenced_ids="btnReset,switch3D,btnSingleColor,btnStartColor,btnCenterColor,btnEndColor" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reset"
+        android:textColor="@android:color/black"
+        app:cornerRadius="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/barrierHorizontal"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switch3D"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/_3d"
+        android:minWidth="50dp"
+        android:text="@string/_3d"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/barrierHorizontal"
+        app:layout_constraintTop_toBottomOf="@+id/btnReset" />
+
+    <com.ss.color_picker.ColorButton
+        android:id="@+id/btnSingleColor"
+        style="@style/ColorPickerButton"
+        app:color_button_text="@string/color"
+        app:layout_constraintBottom_toBottomOf="@+id/btnStartColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/barrierHorizontal"
+        app:layout_constraintTop_toTopOf="@+id/btnStartColor" />
+
+    <com.ss.color_picker.ColorButton
+        android:id="@+id/btnStartColor"
+        style="@style/ColorPickerButton"
+        app:color_button_text="@string/start"
+        app:layout_constraintBottom_toTopOf="@+id/btnCenterColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/barrierHorizontal"
+        app:layout_constraintTop_toBottomOf="@+id/switch3D" />
+
+    <com.ss.color_picker.ColorButton
+        android:id="@+id/btnCenterColor"
+        style="@style/ColorPickerButton"
+        app:color_button_text="@string/center"
+        app:layout_constraintBottom_toTopOf="@+id/btnEndColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/barrierHorizontal"
+        app:layout_constraintTop_toBottomOf="@+id/btnStartColor" />
+
+    <com.ss.color_picker.ColorButton
+        android:id="@+id/btnEndColor"
+        style="@style/ColorPickerButton"
+        app:color_button_text="@string/end"
+        app:layout_constraintBottom_toTopOf="@+id/barrierVertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/barrierHorizontal"
+        app:layout_constraintTop_toBottomOf="@+id/btnCenterColor" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group3DButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="btnStartColor,btnCenterColor,btnEndColor" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="tilHexCode,tilAlpha" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilHexCode"
+        style="@style/ColorPickerTextInputLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tilAlpha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barrierVertical"
+        app:prefixText="#">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etHexCode"
+            style="@style/ColorPickerEditText"
+            android:digits="0123456789ABCDEFabcdef"
+            android:imeOptions="actionDone"
+            android:hint="@string/hint_hex_code"
+            android:inputType="textNoSuggestions"
+            android:maxLength="8" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilAlpha"
+        style="@style/ColorPickerTextInputLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tilHexCode"
+        app:layout_constraintTop_toBottomOf="@+id/barrierVertical"
+        app:suffixText="%">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etAlpha"
+            style="@style/ColorPickerEditText"
+            android:digits="0123456789."
+            android:hint="@string/hint_alpha"
+            android:inputType="numberDecimal"
+            android:maxLength="6" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</merge>

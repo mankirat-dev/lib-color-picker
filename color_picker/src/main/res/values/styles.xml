@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ___________________ ATTRS.XML ___________________ -->
+
+    <declare-styleable name="ColorButton">
+        <attr name="color_button_text" format="string" />
+    </declare-styleable>
+
+    <!-- ___________________ STYLES.XML ___________________ -->
+
+    <style name="ColorPickerSeekBar">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintDimensionRatio">100:15</item>
+    </style>
+
+    <style name="ColorPickerButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="layout_constraintDimensionRatio">1:1</item>
+    </style>
+
+    <style name="ColorPickerTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintWidth_percent">0.45</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="errorEnabled">false</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="suffixTextColor">@android:color/black</item>
+        <item name="prefixTextColor">@android:color/black</item>
+    </style>
+
+    <style name="ColorPickerEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:padding">5dp</item>
+    </style>
+</resources>
